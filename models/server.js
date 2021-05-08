@@ -1,11 +1,15 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
+const hbs = require("express-handlebars");
+const methodOverride = require("method-override")
 
 class Server {
   constructor() {
     this.app = express();
     this.port = process.env.PORT;
     this.usuariosPath = "/api/usuarios";
+    this.views = path.join(__dirname, "views");
 
     // Middlewares
     this.middlewares();
@@ -15,6 +19,16 @@ class Server {
   }
 
   middlewares() {
+
+    //Handelbars
+    this.app.engine(".hbs", hbs({
+      defaultLayaut: "main",
+      layautDir: path.join(this.views, "layouts"),
+      partialDir: path.join(this.views, "partials"),
+      extname: ".hbs"
+    }));
+
+    require("../database");
     // CORS
     this.app.use(cors());
 
@@ -23,9 +37,17 @@ class Server {
 
     // Directorio público
     this.app.use(express.static("public"));
+
+
+    this.app.set("view engine", ".hbs");
+
+    this.app.use(express.urlencoded( {extended: false }));//Post
+
+    this.app.use(methodOverride("_method"));
   }
 
   routes() {
+    this.app.use(require("../routes"));
     this.app.use(this.usuariosPath, require("../routes/user"));
   }
 
