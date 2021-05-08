@@ -2,9 +2,7 @@ const { response, request } = require("express");
 const reg = require("../models/esquema");
 
 const loginGet = (req = request, res = response) => {
-  res.render("login",{
-    query: query
-  });
+  res.render("login");
 };
 
 const loginPost = (req = request, res = response) => {
