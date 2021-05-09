@@ -5,14 +5,27 @@ const loginGet = (req = request, res = response) => {
   res.render("login");
 };
 
-const loginPost = (req = request, res = response) => {
+const loginMedGet = (req = request, res = response) => {
+  var rand = Math.floor(Math.random() * (10 - 0)); //0 a 9
   console.log(req.body);
+  console.log(req.query);
+  res.send("login paso 2 Random-> "+ rand);
+};
+
+const loginPost = async (req = request, res = response) => {
+  console.log(req.body);
+  const mail = await reg.find({correo: req.body.correo})
   res.send("ok");
 };
 
 const registroGet = (req = request, res = response) => {
-  //const { id } = req.params;
-  res.render("registro");
+  res.render("registro paso 2");
+};
+
+const registroMedGet = (req = request, res = response) => {
+  console.log(req.body);
+  console.log(req.query);
+  res.send("registro paso 2");
 };
 
 const registroPost = async (req = request, res = response) => {
@@ -27,7 +40,9 @@ const registroPost = async (req = request, res = response) => {
 
 module.exports = {
   loginGet,
+  loginMedGet,
   loginPost,
   registroGet,
+  registroMedGet,
   registroPost,
 };
