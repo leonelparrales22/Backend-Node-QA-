@@ -19,7 +19,7 @@ const loginPost = async (req = request, res = response) => {
 };
 
 const registroGet = (req = request, res = response) => {
-  res.render("registro paso 2");
+  res.render("registro");
 };
 
 const registroMedGet = (req = request, res = response) => {
