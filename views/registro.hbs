@@ -4,12 +4,32 @@
     </div>
     <form method="GET" action="/api/usuarios/regStep" enctype="application/x-www-form-urlencoded">
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="correo" required>
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <label for="exampleInputName1" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="exampleInputName1" name="name" required>
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <label for="exampleInputID1" class="form-label">Cédula</label>
+            <input type="text" class="form-control" id="exampleInputID1" name="id" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputDIR1" class="form-label">Dirección</label>
+            <input type="text" class="form-control" id="exampleInputDIR1" name="direction" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputTEL1" class="form-label">Teléfono</label>
+            <input type="email" class="form-control" id="exampleInputTEL1" name="mobile" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Dirección de Correo</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="correo" required>
+            <div id="emailHelp" class="form-text">No compartiremos tu correo con nadie más.</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputFE1" class="form-label">Fecha</label>
+            <input type="date" class="form-control" id="exampleInputFE1" name="date" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
             <input type="password" class="form-control" id="exampleInputPassword1" name="pass" required>
         </div>
         <div class="mb-3 form-check">
