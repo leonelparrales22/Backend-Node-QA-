@@ -33,23 +33,63 @@
             <input type="text" class="form-control" id="exampleInputCOD1" name="cod" required>
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="pass" required>
+            <label for="exampleInputNUS1" class="form-label">Nombre Usuario</label>
+            <input type="text" class="form-control" id="exampleInputNUS1" name="user" required>
         </div>
         <div class="mb-3 form-check">
-            <label  class="form-label">Te Gustan los perros</label>
+            <label  class="form-label">Sexo</label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="perros" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">
-                    Claro q yes
+                    Hombre
                 </label>
                 </div>
                 <div class="form-check">
                 <input class="form-check-input" type="radio" name="perros" id="flexRadioDefault2" checked>
                 <label class="form-check-label" for="flexRadioDefault2">
-                    NO >:V
+                    Mujer
                 </label>
             </div>
+                <div class="form-check">
+                <input class="form-check-input" type="radio" name="perros" id="flexRadioDefault3" checked>
+                <label class="form-check-label" for="flexRadioDefault3">
+                    Personalizado
+                </label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <select class="form-select">
+                <option value="">------Seleccione un tipo de sangre------</option>
+                <option value="O-">O negativo</option>
+                <option value="O+">O positivo</option>
+                <option value="A-">A negativo</option>
+                <option value="A+">A positivo</option>
+                <option value="B-">B negativo</option>
+                <option value="B+">B positivo</option>
+                <option value="AB-">AB negativo</option>
+                <option value="AB+">AB positivo</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <select class="form-select">
+                <option value="">------Seleccione Estado Civil------</option>
+                <option value="soltero">Soltero</option>
+                <option value="casado">Casado</option>
+                <option value="divorciado">Divorcido</option>
+                <option value="viudo">Viudo</option>
+            </select>
+        </div>
+        <div class="mb3">
+            <label class="form-label">Subir Imagen</label>
+            <input type="file" class="form-file-input">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="passconf" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPasswordConf1" class="form-label">Confirmar Contraseña</label>
+            <input type="password" class="form-control" id="exampleInputPasswordConf1" name="passconf" required>
         </div>
         <div class="mb-3">
             <label for="exampleColorInput" class="form-label">Color picker</label>
