@@ -2,14 +2,14 @@
      <div class="text-center">
         <h1>REGISTRO</h1>
     </div>
-    <form method="GET" action="/api/usuarios/regStep" enctype="application/x-www-form-urlencoded">
+    <form method="GET" action="/api/usuarios/regStep" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="exampleInputName1" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="exampleInputName1" name="name" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputID1" class="form-label">Cédula</label>
-            <input type="text" class="form-control" id="exampleInputID1" name="id" required>
+            <input type="text" class="form-control" id="exampleInputID1" name="cedula" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputDIR1" class="form-label">Dirección</label>
@@ -17,7 +17,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputTEL1" class="form-label">Teléfono</label>
-            <input type="email" class="form-control" id="exampleInputTEL1" name="mobile" required>
+            <input type="text" class="form-control" id="exampleInputTEL1" name="mobile" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Dirección de Correo</label>
@@ -36,29 +36,29 @@
             <label for="exampleInputNUS1" class="form-label">Nombre Usuario</label>
             <input type="text" class="form-control" id="exampleInputNUS1" name="user" required>
         </div>
-        <div class="mb-3 form-check">
+        <div class="mb-3 text-center form-check">
             <label  class="form-label">Sexo</label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="perros" id="flexRadioDefault1">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1" value="hombre">
                 <label class="form-check-label" for="flexRadioDefault1">
                     Hombre
                 </label>
                 </div>
-                <div class="form-check">
-                <input class="form-check-input" type="radio" name="perros" id="flexRadioDefault2" checked>
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault2" value="mujer">
                 <label class="form-check-label" for="flexRadioDefault2">
                     Mujer
                 </label>
             </div>
-                <div class="form-check">
-                <input class="form-check-input" type="radio" name="perros" id="flexRadioDefault3" checked>
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault3" value="None" checked>
                 <label class="form-check-label" for="flexRadioDefault3">
                     Personalizado
                 </label>
             </div>
         </div>
         <div class="mb-3">
-            <select class="form-select">
+            <select class="form-select" name="tSangre">
                 <option value="">------Seleccione un tipo de sangre------</option>
                 <option value="O-">O negativo</option>
                 <option value="O+">O positivo</option>
@@ -71,7 +71,7 @@
             </select>
         </div>
         <div class="mb-3">
-            <select class="form-select">
+            <select class="form-select" name="eCivil">
                 <option value="">------Seleccione Estado Civil------</option>
                 <option value="soltero">Soltero</option>
                 <option value="casado">Casado</option>
@@ -93,9 +93,8 @@
         </div>
         <div class="mb-3">
             <label for="exampleColorInput" class="form-label">Color picker</label>
-            <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color" name="color">
+            <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#000000" title="Choose your color" name="color">
         </div>
-        <h3>ACA poner todos los campos Ayuda -> tienen q poner el atributo "name" en el input para q el server lo reconozca plez</h3>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

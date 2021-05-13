@@ -7,8 +7,8 @@ const loginGet = (req = request, res = response) => {
 
 const loginMedGet = (req = request, res = response) => {
   var rand = Math.floor(Math.random() * (10 - 0)); //0 a 9
-  console.log(req.body);
-  console.log(req.query);
+  var objLogin = req.query;
+  console.log(objLogin);
   res.send("login paso 2 Random-> "+ rand);
 };
 
@@ -23,7 +23,7 @@ const registroGet = (req = request, res = response) => {
 };
 
 const registroMedGet = (req = request, res = response) => {
-  console.log(req.body);
+  var objReg = req.query;
   console.log(req.query);
   res.send("registro paso 2");
 };
