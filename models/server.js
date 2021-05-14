@@ -2,7 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const hbs = require("express-handlebars");
-const methodOverride = require("method-override")
+const methodOverride = require("method-override");
+const flash = require("connect-flash");
+const session = require("express-session");
 
 class Server {
   constructor() {
@@ -28,6 +30,23 @@ class Server {
       extname: ".hbs"
     }));
 
+    this.app.use(session({
+      secret: "xD",
+      resave: true,
+      saveUninitialized: true
+    }))
+    //flash
+    this.app.use(flash());
+
+    //Variables globales Server
+    this.app.use((req, res, next)=>{
+      res.locals.correcto = req.flash("msg_correcto");
+      res.locals.fallo = req.flash("msg_incorrecto");
+      res.locals.User = false || null;
+      next();
+    });
+
+    //DB
     require("../database");
     // CORS
     this.app.use(cors());

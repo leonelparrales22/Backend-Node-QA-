@@ -1,3 +1,10 @@
+{{#each errors}}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>{{this.text}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{{/each}}
+
 <div class="container">
      <div class="text-center">
         <h1>REGISTRO</h1>
@@ -5,39 +12,40 @@
     <form method="GET" action="/api/usuarios/regStep" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="exampleInputName1" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="exampleInputName1" name="name" required>
+            <input type="text" class="form-control" id="exampleInputName1" name="name" required value="{{objReg.name}}">
         </div>
         <div class="mb-3">
             <label for="exampleInputID1" class="form-label">Cédula</label>
-            <input type="text" class="form-control" id="exampleInputID1" name="cedula" required>
+            <input type="text" class="form-control" id="exampleInputID1" name="cedula" required value="{{objReg.cedula}}">
         </div>
         <div class="mb-3">
             <label for="exampleInputDIR1" class="form-label">Dirección</label>
-            <input type="text" class="form-control" id="exampleInputDIR1" name="direction" required>
+            <input type="text" class="form-control" id="exampleInputDIR1" name="direccion" required value="{{objReg.direccion}}">
         </div>
         <div class="mb-3">
             <label for="exampleInputTEL1" class="form-label">Teléfono</label>
-            <input type="text" class="form-control" id="exampleInputTEL1" name="mobile" required>
+            <input type="text" class="form-control" id="exampleInputTEL1" name="mobile" required value="{{objReg.mobile}}">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Dirección de Correo</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="correo" required>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="correo" required value="{{objReg.correo}}">
             <div id="emailHelp" class="form-text">No compartiremos tu correo con nadie más.</div>
         </div>
         <div class="mb-3">
             <label for="exampleInputFE1" class="form-label">Fecha</label>
-            <input type="date" class="form-control" id="exampleInputFE1" name="date" required>
+            <input type="date" class="form-control" id="exampleInputFE1" name="date" required value="{{objReg.date}}">
         </div>
         <div class="mb-3">
             <label for="exampleInputCOD1" class="form-label">Código Postal</label>
-            <input type="text" class="form-control" id="exampleInputCOD1" name="cod" required>
+            <input type="text" class="form-control" id="exampleInputCOD1" name="cod" required value="{{objReg.cod}}">
         </div>
         <div class="mb-3">
             <label for="exampleInputNUS1" class="form-label">Nombre Usuario</label>
-            <input type="text" class="form-control" id="exampleInputNUS1" name="user" required>
+            <input type="text" class="form-control" id="exampleInputNUS1" name="user" required value="{{objReg.user}}">
         </div>
         <div class="mb-3 text-center form-check">
-            <label  class="form-label">Sexo</label>
+            <hidden>{{objReg.sexo}}</hidden>
+            <label  class="form-label">Sexo: </label>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1" value="hombre">
                 <label class="form-check-label" for="flexRadioDefault1">
@@ -58,6 +66,7 @@
             </div>
         </div>
         <div class="mb-3">
+            <hidden>{{objReg.tSangre}}</hidden>
             <select class="form-select" name="tSangre">
                 <option value="">------Seleccione un tipo de sangre------</option>
                 <option value="O-">O negativo</option>
@@ -71,6 +80,7 @@
             </select>
         </div>
         <div class="mb-3">
+             <hidden>{{objReg.eCivil}}</hidden>
             <select class="form-select" name="eCivil">
                 <option value="">------Seleccione Estado Civil------</option>
                 <option value="soltero">Soltero</option>
@@ -85,11 +95,11 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="passconf" required>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="passconf" required value="{{objReg.passconf}}">
         </div>
         <div class="mb-3">
             <label for="exampleInputPasswordConf1" class="form-label">Confirmar Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPasswordConf1" name="passconf" required>
+            <input type="password" class="form-control" id="exampleInputPasswordConf1" name="passconf" required value="{{objReg.passconf}}">
         </div>
         <div class="mb-3">
             <label for="exampleColorInput" class="form-label">Color picker</label>

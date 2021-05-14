@@ -13,6 +13,6 @@ router.get("/reg", registroGet);
 
 router.get("/regStep", registroMedGet);
 
-router.post("/reg", registroPost);
+router.post("/reg/:id", registroPost);
 
 module.exports = router;
