@@ -5,13 +5,13 @@ const router = Router();
 
 router.get("/login", loginGet);
 
-router.get("/loginStep", loginMedGet);
+router.post("/loginStep", loginMedGet);
 
 router.post("/login", loginPost);
 
 router.get("/reg", registroGet);
 
-router.get("/regStep", registroMedGet);
+router.post("/regStep", registroMedGet);
 
 router.post("/reg/:id", registroPost);
 
