@@ -1,110 +1,149 @@
 {{#each errors}}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>{{this.text}}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{this.text}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 {{/each}}
 
 <div class="container">
-     <div class="text-center">
-        <h1>REGISTRO</h1>
+    <div class="row">
+        <div class="col-2"></div>
+        <br><br>
+        <div class="m-3 col-8">
+            <h2 id="tituloRegistro"><i class="fas fa-user-circle" id="icon"></i>Registro del Usuario</h2>
+        </div>
     </div>
-    <form method="GET" action="/api/usuarios/regStep" enctype="multipart/form-data">
-        <div class="mb-3">
-            <label for="exampleInputName1" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="exampleInputName1" name="name" required value="{{objReg.name}}">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputID1" class="form-label">Cédula</label>
-            <input type="text" class="form-control" id="exampleInputID1" name="cedula" required value="{{objReg.cedula}}">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputDIR1" class="form-label">Dirección</label>
-            <input type="text" class="form-control" id="exampleInputDIR1" name="direccion" required value="{{objReg.direccion}}">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputTEL1" class="form-label">Teléfono</label>
-            <input type="text" class="form-control" id="exampleInputTEL1" name="mobile" required value="{{objReg.mobile}}">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Dirección de Correo</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="correo" required value="{{objReg.correo}}">
-            <div id="emailHelp" class="form-text">No compartiremos tu correo con nadie más.</div>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputFE1" class="form-label">Fecha</label>
-            <input type="date" class="form-control" id="exampleInputFE1" name="date" required value="{{objReg.date}}">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputCOD1" class="form-label">Código Postal</label>
-            <input type="text" class="form-control" id="exampleInputCOD1" name="cod" required value="{{objReg.cod}}">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputNUS1" class="form-label">Nombre Usuario</label>
-            <input type="text" class="form-control" id="exampleInputNUS1" name="user" required value="{{objReg.user}}">
-        </div>
-        <div class="mb-3 text-center form-check">
-            <hidden>{{objReg.sexo}}</hidden>
-            <label  class="form-label">Sexo: </label>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1" value="hombre">
-                <label class="form-check-label" for="flexRadioDefault1">
-                    Hombre
-                </label>
+
+    <div class="row">
+        <div class="col-2"></div>
+        <br><br>
+        <div class="m-3 col-8">
+            <form method="GET" action="/api/usuarios/regStep" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="exampleInputName1" class="form-label"> <i class="fas fa-user-alt"
+                            id="regicon"></i>Nombre</label>
+                    <input type="text" placeholder="Ingresar nombre" class="form-control" id="exampleInputName1"
+                        name="name" required value="{{objReg.name}}">
                 </div>
-                <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault2" value="mujer">
-                <label class="form-check-label" for="flexRadioDefault2">
-                    Mujer
-                </label>
-            </div>
-                <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault3" value="None" checked>
-                <label class="form-check-label" for="flexRadioDefault3">
-                    Personalizado
-                </label>
-            </div>
+                <div class="mb-3">
+                    <label for="exampleInputID1" class="form-label"><i class="fas fa-id-card"
+                            id="regicon"></i>Cédula</label>
+                    <input type="text" placeholder="Ingresar cédula" class="form-control" minlength="10"  id="exampleInputID1"
+                        name="cedula" required value="{{objReg.cedula}}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputDIR1" class="form-label"><i class="fas fa-map-marker-alt"
+                            id="regicon"></i>Dirección</label>
+                    <input type="text" placeholder="Ingresar dirección" class="form-control" id="exampleInputDIR1"
+                        name="direccion" required value="{{objReg.direccion}}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputTEL1" class="form-label"><i class="fas fa-phone"
+                            id="regicon"></i>Teléfono</label>
+                    <input type="text" placeholder="Ejemplo: 0987190827" class="form-control" id="exampleInputTEL1"
+                        name="mobile" required value="{{objReg.mobile}}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"><i class="fas fa-envelope"
+                            id="regicon"></i>Dirección de Correo</label>
+                    <input type="email" placeholder="ejemplo@hotmail.com" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" name="correo" required value="{{objReg.correo}}">
+                    <div id="emailHelp" class="form-text">No compartiremos tu correo con nadie más.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputFE1" class="form-label"><i class="fas fa-birthday-cake"
+                            id="regicon"></i>Fecha de nacimiento</label>
+                    <input type="date" class="form-control" id="exampleInputFE1" name="date" required
+                        value="{{objReg.date}}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputCOD1" class="form-label"><i class="fas fa-mail-bulk" id="regicon"></i>Código
+                        Postal</label>
+                    <input type="text" placeholder="Ingresar código postal" class="form-control" id="exampleInputCOD1"
+                        name="cod" required value="{{objReg.cod}}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputNUS1" class="form-label"><i class="fas fa-user-tag" id="regicon"></i>Nombre
+                        Usuario</label>
+                    <input type="text" placeholder="Ingresar nombre usuario" class="form-control" id="exampleInputNUS1"
+                        name="user" required value="{{objReg.user}}">
+                </div>
+                <div class="mb-3 form-check">
+                    <hidden>{{objReg.sexo}}</hidden>
+                    <label class="form-label"><i class="fas fa-venus-mars" id="regicon"></i>Sexo: </label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1" value="hombre">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Hombre
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault2" value="mujer">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Mujer
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault3" value="None"
+                            checked>
+                        <label class="form-check-label" for="flexRadioDefault3">
+                            Personalizado
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <hidden>{{objReg.tSangre}}</hidden>
+                    <i class="fas fa-syringe" id="regicon"></i>Tipo de sangre
+                    <select class="form-select" name="tSangre">
+                        <option value="">------Seleccione un tipo de sangre------</option>
+                        <option value="O-">O negativo</option>
+                        <option value="O+">O positivo</option>
+                        <option value="A-">A negativo</option>
+                        <option value="A+">A positivo</option>
+                        <option value="B-">B negativo</option>
+                        <option value="B+">B positivo</option>
+                        <option value="AB-">AB negativo</option>
+                        <option value="AB+">AB positivo</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <hidden>{{objReg.eCivil}}</hidden>
+                    <i class="fab fa-wpforms" id="regicon"></i> Estado Civil
+                    <select class="form-select" name="eCivil">
+                        <option value="">------Seleccione Estado Civil------</option>
+                        <option value="soltero">Soltero</option>
+                        <option value="casado">Casado</option>
+                        <option value="divorciado">Divorcido</option>
+                        <option value="viudo">Viudo</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="mb3">
+                        <label class="form-label col-6"><i class="fas fa-images" id="regicon"></i>Cargar foto de
+                            perfil</label>
+                        <input type="file" class="form-file-input">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label"><i class="fas fa-lock"
+                            id="regicon"></i>Contraseña</label>
+                    <input type="password" placeholder="**************" class="form-control" minlength="8" maxlength="16" id="exampleInputPassword1" name="passconf" required
+                        value="{{objReg.passconf}}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPasswordConf1" class="form-label"><i class="fas fa-lock"
+                            id="regicon"></i>Confirmar Contraseña</label>
+                    <input type="password" placeholder="**************"class="form-control" minlength="8" maxlength="16" id="exampleInputPasswordConf1" name="passconf" required
+                        value="{{objReg.passconf}}">
+                </div>
+
+                <center>
+                    <button type="submit" class="btn btn-primary" id="boton">ACEPTAR</button>
+                    <br><br> <br><br>
+                </center>
+            </form>
         </div>
-        <div class="mb-3">
-            <hidden>{{objReg.tSangre}}</hidden>
-            <select class="form-select" name="tSangre">
-                <option value="">------Seleccione un tipo de sangre------</option>
-                <option value="O-">O negativo</option>
-                <option value="O+">O positivo</option>
-                <option value="A-">A negativo</option>
-                <option value="A+">A positivo</option>
-                <option value="B-">B negativo</option>
-                <option value="B+">B positivo</option>
-                <option value="AB-">AB negativo</option>
-                <option value="AB+">AB positivo</option>
-            </select>
-        </div>
-        <div class="mb-3">
-             <hidden>{{objReg.eCivil}}</hidden>
-            <select class="form-select" name="eCivil">
-                <option value="">------Seleccione Estado Civil------</option>
-                <option value="soltero">Soltero</option>
-                <option value="casado">Casado</option>
-                <option value="divorciado">Divorcido</option>
-                <option value="viudo">Viudo</option>
-            </select>
-        </div>
-        <div class="mb3">
-            <label class="form-label">Subir Imagen</label>
-            <input type="file" class="form-file-input">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="passconf" required value="{{objReg.passconf}}">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPasswordConf1" class="form-label">Confirmar Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPasswordConf1" name="passconf" required value="{{objReg.passconf}}">
-        </div>
-        <div class="mb-3">
-            <label for="exampleColorInput" class="form-label">Color picker</label>
-            <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#000000" title="Choose your color" name="color">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 </div>

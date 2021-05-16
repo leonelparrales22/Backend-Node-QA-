@@ -1,4 +1,55 @@
-body{
-    background-color: black;
-    color: blanchedalmond;
+footer {
+    background-color: #3D3C3C;
+    color: white;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    padding: 10px;
+}
+
+#navtitulos {
+    background-color: #3D3C3C;
+    color: white;
+}
+
+#tituloRegistro {
+    background-color: #141D5E;
+    text-align: center;
+    align-content: center;
+    padding: 5px;
+    color: white;
+    font-weight: 100;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    margin-bottom: 40px;
+}
+
+#titulo {
+    padding-top: 60px;
+    text-align: center;
+}
+
+#icon {
+    padding-right: 5px;
+    padding-left: 10px;
+}
+
+#regicon {
+    padding-right: 5px;
+    color: #141D5E;
+}
+
+#boton {
+    background-color: #141D5E;
+    text-align: center;
+    padding: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
 }

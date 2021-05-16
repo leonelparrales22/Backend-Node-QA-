@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { loginGet, loginMedGet ,loginPost, registroGet, registroMedGet, registroPost } = require("../controllers/user");
+const { loginGet, loginMedGet, loginPost, registroGet, registroMedGet, registroPost, pregAuntenticacion } = require("../controllers/user");
 
 const router = Router();
 
@@ -14,5 +14,7 @@ router.get("/reg", registroGet);
 router.get("/regStep", registroMedGet);
 
 router.post("/reg/:id", registroPost);
+
+router.get("/preguntas", pregAuntenticacion)
 
 module.exports = router;

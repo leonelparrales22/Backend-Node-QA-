@@ -1,0 +1,64 @@
+{{#each errors}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{this.text}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/each}}
+
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        <br><br>
+        <div class="m-3 col-8">
+            <h2 id="tituloRegistro"><i class="fas fa-user-circle" id="icon"></i>Preguntas para tu Inicio de Sesión</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2"></div>
+        <br><br>
+        <div class="m-3 col-8">
+            <form method="GET" action="" enctype="multipart/form-data">
+                <div class="mb-3">
+                    ¿Cuál clima es tu favorito?
+                    <select class="form-select" name="clima">
+                        <option value="">-----Seleccionar</option>
+                        <option value="Verano">Verano</option>
+                        <option value="invierno">Invierno</option>
+                        <option value="otonio">Otoño</option>
+                        <option value="primavera">Primavera</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    ¿Qué país te gustaría conocer? 
+                    <input type="text" placeholder="Escribe tu país que te gustaría conocer" class="form-control"
+                    id="pais" name="pais-conocer" required value="">
+                </div>
+
+                <div class="mb-3">
+                   ¿Cuál es tu color favorito?
+                   <input type="text" placeholder="Escribe tu color favorito" class="form-control"
+                    id="color" name="color-fav" required value="">
+                </div>
+
+                <div class="mb-3">
+                   ¿Cuál es tu serie o película favorita?
+                   <input type="text" placeholder="Escribe tu serie o pelicula favorita" class="form-control"
+                    id="pelicula-serie" name="peli-serie-fav" required value="">
+                </div>
+
+                <div class="mb-3">
+                   ¿A qué colegio fuiste?
+                   <input type="text" placeholder="Escribe tu colegio" class="form-control"
+                    id="cole" name="cole-name" required value="">
+                </div>
+                
+                <center>
+                    <button type="submit" class="btn btn-primary" id="boton">ACEPTAR</button>
+                    <br><br> <br><br>
+                </center>
+            </form>
+        </div>
+    </div>
+</div>
