@@ -13,9 +13,9 @@ const loginMedGet = async(req = request, res = response) => {
     const correo = await User.findOne({correo: objLogin.correo});
     if(correo){
       var equal = await correo.decryptPass(objLogin.pass, correo.passconf);
-      console.log(correo);
+      console.log("Reg Usuario\n"+ correo);
       if(equal){
-        console.log(req.User);
+        //console.log(req.User);//ver algo de passport
         res.send("Ok validaciones completadas "+ rand);
       }else{
         req.flash("msg_incorrecto", "Contraseña incorrecta :)");
