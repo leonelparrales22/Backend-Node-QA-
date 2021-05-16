@@ -2,15 +2,14 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const hbs = require("express-handlebars");
-const methodOverride = require("method-override");
 const flash = require("connect-flash");
 const session = require("express-session");
+const bp = require("body-parser");
 
 class Server {
   constructor() {
     this.app = express();
     this.port = process.env.PORT;
-    this.usuariosPath = "/api/usuarios";
     this.views = path.join(__dirname, "views");
 
     // Middlewares
@@ -51,23 +50,21 @@ class Server {
     // CORS
     this.app.use(cors());
 
-    // Lectura y parseo del body
-    this.app.use(express.json());
-
     // Directorio público
     this.app.use(express.static("public"));
 
 
     this.app.set("view engine", ".hbs");
 
-    this.app.use(express.urlencoded( {extended: false }));//Post
+    this.app.use(bp.urlencoded({ extended: false}));//Post
 
-    this.app.use(methodOverride("_method"));
+     // Lectura y parseo del body
+    this.app.use(bp.json());
   }
 
   routes() {
     this.app.use(require("../routes"));
-    this.app.use(this.usuariosPath, require("../routes/user"));
+    this.app.use(require("../routes/user"));
   }
 
   listen() {

@@ -5,9 +5,9 @@ const loginGet = (req = request, res = response) => {
     res.render("login");
 };
 
-const loginMedGet = async(req = request, res = response) => {
+const loginMed = async(req = request, res = response) => {
     var rand = Math.floor(Math.random() * (10 - 0)); //0 a 9
-    var objLogin = req.query;
+    var objLogin = req.body;
     console.log(objLogin);
     try {
         const correo = await User.findOne({ correo: objLogin.correo });
@@ -19,11 +19,11 @@ const loginMedGet = async(req = request, res = response) => {
                 res.send("Ok validaciones completadas " + rand);
             } else {
                 req.flash("msg_incorrecto", "Contraseña incorrecta :)");
-                res.redirect("/api/usuarios/login");
+                res.redirect("/login");
             }
         } else {
             req.flash("msg_incorrecto", "Correo no Existe!! :)");
-            res.redirect("/api/usuarios/login");
+            res.redirect("/login");
         }
     } catch (error) {
         console.log(error);
@@ -41,10 +41,9 @@ const registroGet = (req = request, res = response) => {
     res.render("registro");
 };
 
-const registroMedGet = async(req = request, res = response) => {
-    var objReg = req.query;
-    objReg.passconf = objReg.passconf[0];
-    //console.log(objReg);
+const registroMed = async(req = request, res = response) => {
+    var objReg = req.body;
+    console.log(objReg);
     var errors = [];
     try {
         const emailUser = await User.findOne({ correo: objReg.correo });
@@ -56,6 +55,7 @@ const registroMedGet = async(req = request, res = response) => {
         if (objReg.passconf[0] != objReg.passconf[1]) {
             errors.push({ text: "las contraseñas no son iguales" });
         }
+        objReg.passconf = objReg.passconf[0];
         if (errors.length > 0) {
             res.render("registro", {
                 errors,
@@ -66,7 +66,7 @@ const registroMedGet = async(req = request, res = response) => {
             newReg.passconf = await newReg.encryptPass(objReg.passconf);
             await newReg.save();
             req.flash("msg_correcto", "Registrado!! :)");
-            res.redirect("/api/usuarios/login");
+            res.redirect("/login");
         }
     } catch (e) {
         console.log(e);
@@ -89,10 +89,10 @@ const pregAuntenticacion = (req = request, res = response) => {
 };
 module.exports = {
     loginGet,
-    loginMedGet,
+    loginMed,
     loginPost,
     registroGet,
-    registroMedGet,
+    registroMed,
     registroPost,
     pregAuntenticacion,
 };
