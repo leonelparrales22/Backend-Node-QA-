@@ -1,12 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const { loginGet, loginMed, loginPost, registroGet, registroMed, registroPost, pregAuntenticacion } = require("../controllers/user");
+const { loginGet, loginMed, loginPregunta , loginPost, registroGet, registroMed, registroPost, pregAuntenticacion } = require("../controllers/user");
 
 router.get("/login", loginGet);
 
 router.post("/loginStep", loginMed);
 
-router.post("/login", loginPost);
+router.get("/loginPregunta", loginPregunta )
+
+router.post("/login/:id", loginPost);
 
 router.get("/reg", registroGet);
 

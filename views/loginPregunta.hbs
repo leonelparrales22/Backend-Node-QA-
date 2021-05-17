@@ -1,0 +1,47 @@
+{{#each errors}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{this.text}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/each}}
+
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        <br><br>
+        <div class="m-3 col-8">
+            <h2 id="tituloRegistro"><i class="fas fa-user-circle" id="icon"></i>Pregunta :O</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2"></div>
+        <br><br>
+        <div class="m-3 col-8">
+            <form method="POST" action="/login/{{id}}" enctype="application/x-www-form-urlencoded">
+            {{#if bool}}
+                <div class="mb-3">
+                    {{preg}}
+                    <select class="form-select" name="{{head}}">
+                        <option value="">-----Seleccionar</option>
+                        <option value="Verano">Verano</option>
+                        <option value="invierno">Invierno</option>
+                        <option value="otonio">Otoño</option>
+                        <option value="primavera">Primavera</option>
+                    </select>
+                </div>
+            {{else}}
+                  <div class="mb-3">
+                    {{preg}}
+                    <input type="text" placeholder="Escribe ..." class="form-control"
+                    id="pais" name="{{head}}" required value="">
+                </div>
+            {{/if}}
+                <center>
+                    <button type="submit" class="btn btn-primary" id="boton">ACEPTAR</button>
+                    <br><br> <br><br>
+                </center>
+            </form>
+        </div>
+    </div>
+</div>

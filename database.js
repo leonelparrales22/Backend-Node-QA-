@@ -6,7 +6,7 @@ const uri = process.env.Url;
 mongoose.connect(uri, {
     useCreateIndex: true,
     useNewUrlParser: true,
-    useFindAndModify: true,
+    useFindAndModify: false,//true deprecated
     useUnifiedTopology: true
 })
 .then(db=>console.log("DB is Connected"))

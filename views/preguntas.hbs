@@ -18,7 +18,7 @@
         <div class="col-2"></div>
         <br><br>
         <div class="m-3 col-8">
-            <form method="GET" action="" enctype="multipart/form-data">
+            <form method="POST" action="/reg/{{id}}" enctype="application/x-www-form-urlencoded">
                 <div class="mb-3">
                     ¿Cuál clima es tu favorito?
                     <select class="form-select" name="clima">
@@ -33,25 +33,25 @@
                 <div class="mb-3">
                     ¿Qué país te gustaría conocer? 
                     <input type="text" placeholder="Escribe tu país que te gustaría conocer" class="form-control"
-                    id="pais" name="pais-conocer" required value="">
+                    id="pais" name="pais" required value="">
                 </div>
 
                 <div class="mb-3">
                    ¿Cuál es tu color favorito?
                    <input type="text" placeholder="Escribe tu color favorito" class="form-control"
-                    id="color" name="color-fav" required value="">
+                    id="color" name="color" required value="">
                 </div>
 
                 <div class="mb-3">
                    ¿Cuál es tu serie o película favorita?
                    <input type="text" placeholder="Escribe tu serie o pelicula favorita" class="form-control"
-                    id="pelicula-serie" name="peli-serie-fav" required value="">
+                    id="pelicula-serie" name="peli_serie" required value="">
                 </div>
 
                 <div class="mb-3">
                    ¿A qué colegio fuiste?
                    <input type="text" placeholder="Escribe tu colegio" class="form-control"
-                    id="cole" name="cole-name" required value="">
+                    id="cole" name="cole" required value="">
                 </div>
                 
                 <center>

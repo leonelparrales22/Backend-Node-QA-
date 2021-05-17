@@ -30,7 +30,7 @@ class Server {
     }));
 
     this.app.use(session({
-      secret: "xD",
+      secret: "secret",
       resave: true,
       saveUninitialized: true
     }))
@@ -41,7 +41,6 @@ class Server {
     this.app.use((req, res, next)=>{
       res.locals.correcto = req.flash("msg_correcto");
       res.locals.fallo = req.flash("msg_incorrecto");
-      res.locals.User = false || null;
       next();
     });
 
