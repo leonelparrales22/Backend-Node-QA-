@@ -68,7 +68,6 @@
                         name="user" required value="{{objReg.user}}">
                 </div>
                 <div class="mb-3 form-check">
-                    <hidden>{{objReg.sexo}}</hidden>
                     <label class="form-label"><i class="fas fa-venus-mars" id="regicon"></i>Sexo: </label>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1" value="hombre">
@@ -91,7 +90,6 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <hidden>{{objReg.tSangre}}</hidden>
                     <i class="fas fa-syringe" id="regicon"></i>Tipo de sangre
                     <select class="form-select" name="tSangre">
                         <option value="">------Seleccione un tipo de sangre------</option>
@@ -107,7 +105,6 @@
                 </div>
 
                 <div class="mb-3">
-                    <hidden>{{objReg.eCivil}}</hidden>
                     <i class="fab fa-wpforms" id="regicon"></i> Estado Civil
                     <select class="form-select" name="eCivil">
                         <option value="">------Seleccione Estado Civil------</option>
@@ -117,11 +114,31 @@
                         <option value="viudo">Viudo</option>
                     </select>
                 </div>
-                <div class="row">
-                    <div class="mb3">
-                        <label class="form-label col-6"><i class="fas fa-images" id="regicon"></i>Cargar foto de
-                            perfil</label>
-                        <input type="file" class="form-file-input">
+                <div class="mb-3 form-check">
+                    <label class="form-label"><i class="fab fa-creative-commons-by" id="regicon"></i>Etnia: </label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="etnia" id="flexRadioDefault1" value="meztizo" checked>
+                        <label class="form-check-label" for="flexRadioDefault1" >
+                            Meztizo
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="etnia" id="flexRadioDefault2" value="indigena">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Indígena
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="etnia" id="flexRadioDefault3" value="afro">
+                        <label class="form-check-label" for="flexRadioDefault3">
+                            Afroamericano
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="etnia" id="flexRadioDefault3" value="otro">
+                        <label class="form-check-label" for="flexRadioDefault3">
+                            Otro
+                        </label>
                     </div>
                 </div>
 

@@ -10,22 +10,22 @@ const loginMed = async(req = request, res = response) => {
     try {
         const correo = await User.findOne({ correo: objLogin.correo });
         if (correo) {
-            if(correo.intentos > 3){
+            if (correo.intentos > 3) {
                 req.flash("msg_incorrecto", "Estas bloqueado :) \n sobrepasaste el numero de intentos permitidos");
                 res.redirect("/login");
-            }else{
+            } else {
                 //console.log("Reg Usuario\n" + correo);
                 var equal = await correo.decryptPass(objLogin.pass, correo.passconf);
                 var id = encodeURIComponent(correo._id);
                 if (equal) {
-                    req.flash("msg_correcto", "Bienvenido "+correo.name);
-                    res.redirect("/loginPregunta?id="+id);
+                    req.flash("msg_correcto", "Bienvenido " + correo.name);
+                    res.redirect("/loginPregunta?id=" + id);
                 } else {
                     req.flash("msg_incorrecto", "Contraseña incorrecta :)");
                     res.redirect("/login");
                 }
             }
-         
+
         } else {
             req.flash("msg_incorrecto", "Correo no Existe!! :)");
             res.redirect("/login");
@@ -35,34 +35,34 @@ const loginMed = async(req = request, res = response) => {
     }
 };
 
-const loginPregunta = (req = request, res = response) =>{
+const loginPregunta = (req = request, res = response) => {
     var id = req.query.id;
     var text = "";
     var head = "";
     var bool = false;
     var rand = Math.floor(Math.random() * (5 - 0)); //0 a 4
-    if(rand == 0){
+    if (rand == 0) {
         text += "¿Qué país te gustaría conocer?";
         head = "pais";
     }
-    if(rand == 1){
+    if (rand == 1) {
         text += "¿Cuál es tu color favorito?";
         head = "color";
     }
-    if(rand == 2){
+    if (rand == 2) {
         text += "¿Cuál es tu serie o película favorita?";
         head = "peli_serie";
     }
-    if(rand == 3){
+    if (rand == 3) {
         text += "¿Cuál clima es tu favorito?";
         head = "clima";
         bool = true;
     }
-    if(rand == 4){
+    if (rand == 4) {
         text += " ¿A qué colegio fuiste?";
         head = "cole";
     }
-    res.render("loginPregunta",{
+    res.render("loginPregunta", {
         bool,
         preg: text,
         head,
@@ -76,33 +76,30 @@ const loginPost = async(req = request, res = response) => {
     console.log(req.body);*/
     var user = await User.findById(req.params.id);
     var intentos = user.intentos;
-    if(intentos < 4){
+    if (intentos < 4) {
         //console.log(user);
         var mipregunta = Object.keys(req.body)[0];
-        if(req.body[mipregunta] === user[mipregunta]){
-            var resp = await User.findByIdAndUpdate(req.params.id, {intentos: 0});
-            req.flash("msg_correcto", "Si que es usted !! :)\n Bienvenido "+user.name+"!");
+        if (req.body[mipregunta] === user[mipregunta]) {
+            var resp = await User.findByIdAndUpdate(req.params.id, { intentos: 0 });
+            req.flash("msg_correcto", "Si que es usted !! :)\n Bienvenido " + user.name + "!");
             res.redirect("/user");
-        }else{
-            intentos ++;
-            F = 3-intentos;
-            if (F < 0 ){
-                req.flash("msg_incorrecto", "Lo sentimos se te a bloqueado el acceso!");
+        } else {
+            intentos++;
+            F = 3 - intentos;
+            if (F < 0) {
+                req.flash("msg_incorrecto", "Lo sentimos, Cuenta bloqueada!");
+            } else if (F == 0) {
+                req.flash("msg_incorrecto", "Es tu última oportunidad: " + (F) + " intentos, tu cuenta quedará  bloqueada por 48 horas :)");
+            } else if (F == 1) {
+                req.flash("msg_incorrecto", "Recuerda ingesar la repuesta tal cual ingresaste en el registro(Mayúsculas, tildes, espacios): " + (F) + " intento");
+            } else {
+                req.flash("msg_incorrecto", "Alto ahí!! te quedan: " + (F) + " intentos");
             }
-            else if (F == 0){
-                req.flash("msg_incorrecto", "Es tu última oportunidad: "+ (F) + " intentos, tu cuenta quedará  bloqueada por 48 horas :)");
-            }
-            else if (F == 1){
-                req.flash("msg_incorrecto", "Recuerda ingesar la repuesta tal cual ingresaste en el registro(Mayusculas, tildes, espacios): "+ (F) + " intentos");
-            }
-            else{
-                req.flash("msg_incorrecto", "Alto ahi!! te quedan: "+ (F) + " intentos");
-            }
-            var resp = await User.findByIdAndUpdate(req.params.id, {intentos: intentos});
-            res.redirect("/loginPregunta?id="+req.params.id);
-        }  
-    }else{
-        req.flash("msg_incorrecto", "Lo sentimos se te a bloqueado el acceso!");
+            var resp = await User.findByIdAndUpdate(req.params.id, { intentos: intentos });
+            res.redirect("/loginPregunta?id=" + req.params.id);
+        }
+    } else {
+        req.flash("msg_incorrecto", "Lo sentimos, acceso bloqueado!");
         res.redirect("/");
     }
 };
@@ -119,11 +116,11 @@ const registroMed = async(req = request, res = response) => {
         const emailUser = await User.findOne({ correo: objReg.correo });
         //console.log("Encontrado: "+ emailUser);// todo el obj
         if (emailUser) {
-            errors.push({ text: "El correo ya esta registrado" });
+            errors.push({ text: "El correo ya está registrado" });
 
         }
         if (objReg.passconf[0] != objReg.passconf[1]) {
-            errors.push({ text: "las contraseñas no son iguales" });
+            errors.push({ text: "Las contraseñas no son iguales" });
         }
         objReg.passconf = objReg.passconf[0];
         if (errors.length > 0) {
@@ -141,7 +138,7 @@ const registroMed = async(req = request, res = response) => {
             const newReg = new User(objReg);
             newReg.passconf = await newReg.encryptPass(objReg.passconf);
             await newReg.save();
-           /// console.log("reg: "+newReg);
+            /// console.log("reg: "+newReg);
             res.render("preguntas", {
                 id: newReg._id
             });
@@ -154,8 +151,8 @@ const registroMed = async(req = request, res = response) => {
 const registroPost = async(req = request, res = response) => {
     //console.log(req.params.id);
     objRegistro = req.body;
-    var resp = await User.findByIdAndUpdate(req.params.id, objRegistro ); //Encuentro el id y edito
-    console.log("palabras: "+resp);
+    var resp = await User.findByIdAndUpdate(req.params.id, objRegistro); //Encuentro el id y edito
+    console.log("palabras: " + resp);
     req.flash("msg_correcto", "Registrado!! :)");
     res.redirect("/login");
 };
