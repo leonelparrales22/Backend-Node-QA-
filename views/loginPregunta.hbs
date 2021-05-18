@@ -6,38 +6,6 @@
 {{/each}}
 
 <div class="container">
-    <script>
-      const carga = () => {
-        let contador_m = 0;
-        let contador_s = 0;
-        let s = document.getElementById("segundos");
-        let m = document.getElementById("minutos");
-        let estado = "true";
-        const cronometro = setInterval(() => {
-            if(contador_s == 60){
-              contador_s = 0;
-              contador_m ++;
-              m.innerHTML = contador_m;
-              if(contador_m == 0) {
-                contador_m = 0;
-              }
-            }
-            s.innerHTML = contador_s;
-              if(contador_s == 20){
-                clearInterval(cronometro);
-                alert("Tiempo excedido");
-                //carga();
-              }else if(contador_s >= 16){
-                  estado = "false";
-                  console.log(estado);
-              }
-            contador_s ++;
-          }
-        ,1000);
-        return "Hola";
-      }
-      window.onload = carga;
-    </script>
     <div class="row">
         <div class="col-2"></div>
         <br><br>
@@ -45,6 +13,7 @@
             <h2 id="tituloRegistro"><i class="fas fa-user-check" id="icon"></i>Pregunta de Autenticidad</h2>
             <center><img src="/imagenes/valida.png" width="100" height="100"/></center>
             <span id = "minutos">0</span>:<span name = "segundosID" id = "segundos">0</span>
+            <input type="hidden" value="{{id}}" id="myInput">
         </div>
     </div>
 
@@ -56,7 +25,7 @@
             {{#if bool}}
                 <div class="mb-3">
                     <b>{{preg}}</b>
-                    <select class="form-select" name="{{head}}">
+                    <select class="form-select" name="{{head}}" id="pais">
                         <option value="">-----Seleccionar</option>
                         <option value="Verano">Verano</option>
                         <option value="invierno">Invierno</option>
@@ -79,3 +48,56 @@
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script>
+      //let ide = document.getElementById("eti").value;
+      //console.log(ide);
+      var inputVal = document.getElementById("myInput").value;
+      //var idPais = document.getElementById("pais").value;
+      //console.log(idPais);
+      const carga = () => {
+        let contador_m = 0;
+        let contador_s = 0;
+        let s = document.getElementById("segundos");
+        let m = document.getElementById("minutos");
+        let estado = "True";
+        const cronometro = setInterval(() => {
+            if(contador_s == 60){
+              contador_s = 0;
+              contador_m ++;
+              m.innerHTML = contador_m;
+              if(contador_m == 0) {
+                contador_m = 0;
+              }
+            }
+            s.innerHTML = contador_s;
+              if(contador_s == 5){
+                clearInterval(cronometro);
+                alert("Tiempo excedido");
+                //const Http = new XMLHttpRequest();
+                //const url=`localhost:8000/login/${inputVal}`
+                //console.log(url);
+                //Http.open("POST", url);
+                //Http.send();
+
+                //location.reload();
+                //carga();
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST",`http://localhost:8000/login/${inputVal}` , true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify({
+                value: "False"
+                }));
+                //window.location.reload();
+              }else if(contador_s >= 16){
+                  estado = "False";
+                  console.log(estado);
+              }
+            contador_s ++;
+          }
+        ,1000);
+
+        return estado;
+      }
+      window.onload = carga;
+    </script>

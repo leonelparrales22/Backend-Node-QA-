@@ -72,8 +72,8 @@ const loginPregunta = (req = request, res = response) => {
 };
 
 const loginPost = async(req = request, res = response) => {
-    /*console.log(req.params);
-    console.log(req.body);*/
+    console.log(req.params);
+    console.log(req.body);
     var user = await User.findById(req.params.id);
     var intentos = user.intentos;
     if (intentos < 4) {
