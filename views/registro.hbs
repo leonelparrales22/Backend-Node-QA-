@@ -17,56 +17,62 @@
         <div class="col-2"></div>
         <br><br>
         <div class="m-3 col-8">
-            <form action="/regStep" method="POST" enctype="application/x-www-form-urlencoded">
+            <form action="/regStep" method="POST" enctype="application/x-www-form-urlencoded" onsubmit="return validar();">
+                
+                <!-- GRUPO nombre -->
                 <div class="mb-3">
-                    <label for="exampleInputName1" class="form-label"> <i class="fas fa-user-alt"
-                            id="regicon"></i>Nombre</label>
-                    <input type="text" placeholder="Ingresar nombre" class="form-control" id="exampleInputName1"
+                    <i class="fas fa-user-alt" id="regicon"></i>Nombre
+                    <input type="text" placeholder="Ingresar nombre" class="form-control" id="name"
                         name="name" required value="{{objReg.name}}">
-                </div>
+                    </div> 
+                <!-- -->
+
                 <div class="mb-3">
-                    <label for="exampleInputID1" class="form-label"><i class="fas fa-id-card"
-                            id="regicon"></i>Cédula</label>
-                    <input type="text" placeholder="Ingresar cédula" class="form-control" minlength="10"  id="exampleInputID1"
-                        name="cedula" required value="{{objReg.cedula}}">
+                    <i class="fas fa-id-card" id="regicon"></i>Cédula
+                    <input type="text" placeholder="Ingresar cédula" class="form-control" minlength="10"  id="cedula"
+                        name="cedula" required value="{{objReg.cedula}}" onkeypress="soloNum(event)">
+                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
+
                 <div class="mb-3">
-                    <label for="exampleInputDIR1" class="form-label"><i class="fas fa-map-marker-alt"
-                            id="regicon"></i>Dirección</label>
-                    <input type="text" placeholder="Ingresar dirección" class="form-control" id="exampleInputDIR1"
+                    <i class="fas fa-map-marker-alt" id="regicon"></i>Dirección
+                    <input type="text" placeholder="Ingresar dirección" class="form-control" id="direccion"
                         name="direccion" required value="{{objReg.direccion}}">
                 </div>
+
                 <div class="mb-3">
-                    <label for="exampleInputTEL1" class="form-label"><i class="fas fa-phone"
-                            id="regicon"></i>Teléfono</label>
-                    <input type="text" placeholder="Ejemplo: 0987190827" class="form-control" id="exampleInputTEL1"
-                        name="mobile" required value="{{objReg.mobile}}">
+                    <i class="fas fa-phone" id="regicon"></i>Teléfono
+                    <input type="text" placeholder="Ejemplo: 0987190827" class="form-control" id="telefono"
+                        name="mobile" required value="{{objReg.mobile}}" onkeypress="soloNum(event)" >
                 </div>
+
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"><i class="fas fa-envelope"
-                            id="regicon"></i>Dirección de Correo</label>
-                    <input type="email" placeholder="ejemplo@hotmail.com" class="form-control" id="exampleInputEmail1"
+                    <i class="fas fa-envelope" id="regicon"></i>Dirección de Correo
+                    <input type="text" placeholder="ejemplo@hotmail.com" class="form-control" id="correo"
                         aria-describedby="emailHelp" name="correo" required value="{{objReg.correo}}">
                     <div id="emailHelp" class="form-text">No compartiremos tu correo con nadie más.</div>
                 </div>
+
                 <div class="mb-3">
-                    <label for="exampleInputFE1" class="form-label"><i class="fas fa-birthday-cake"
-                            id="regicon"></i>Fecha de nacimiento</label>
-                    <input type="date" class="form-control" id="exampleInputFE1" name="date" required
+                    <i class="fas fa-birthday-cake" id="regicon"></i>Fecha de nacimiento</label>
+                    <input type="date" class="form-control" id="fecha-nacimiento" name="date" required
                         value="{{objReg.date}}">
                 </div>
+
                 <div class="mb-3">
-                    <label for="exampleInputCOD1" class="form-label"><i class="fas fa-mail-bulk" id="regicon"></i>Código
-                        Postal</label>
-                    <input type="text" placeholder="Ingresar código postal" class="form-control" id="exampleInputCOD1"
+                    <i class="fas fa-mail-bulk" id="regicon"></i>Código Postal
+                    <input type="text" placeholder="Ingresar código postal" class="form-control" id="postal"
                         name="cod" required value="{{objReg.cod}}">
                 </div>
+
+                <!-- Grupo: Usuario -->              
                 <div class="mb-3">
-                    <label for="exampleInputNUS1" class="form-label"><i class="fas fa-user-tag" id="regicon"></i>Nombre
-                        Usuario</label>
-                    <input type="text" placeholder="Ingresar nombre usuario" class="form-control" id="exampleInputNUS1"
+                    <i class="fas fa-user-tag" id="regicon"></i>Nombre Usuario</label>
+                    <input type="text" placeholder="Ingresar nombre usuario" class="form-control" id="user"
                         name="user" required value="{{objReg.user}}">
                 </div>
+                <!-- -->
+
                 <div class="mb-3 form-check">
                     <label class="form-label"><i class="fas fa-venus-mars" id="regicon"></i>Sexo: </label>
                     <div class="form-check form-check-inline">
@@ -89,9 +95,10 @@
                         </label>
                     </div>
                 </div>
+
                 <div class="mb-3">
                     <i class="fas fa-syringe" id="regicon"></i>Tipo de sangre
-                    <select class="form-select" name="tSangre">
+                    <select class="form-select" name="tSangre" required>
                         <option value="">------Seleccione un tipo de sangre------</option>
                         <option value="O-">O negativo</option>
                         <option value="O+">O positivo</option>
@@ -106,7 +113,7 @@
 
                 <div class="mb-3">
                     <i class="fab fa-wpforms" id="regicon"></i> Estado Civil
-                    <select class="form-select" name="eCivil">
+                    <select class="form-select" name="eCivil" required>
                         <option value="">------Seleccione Estado Civil------</option>
                         <option value="soltero">Soltero</option>
                         <option value="casado">Casado</option>
@@ -114,46 +121,50 @@
                         <option value="viudo">Viudo</option>
                     </select>
                 </div>
+
                 <div class="mb-3 form-check">
                     <label class="form-label"><i class="fab fa-creative-commons-by" id="regicon"></i>Etnia: </label>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="etnia" id="flexRadioDefault1" value="meztizo" checked>
+                        <input class="form-check-input" type="radio" name="etnia" id="mestizo" value="meztizo" checked>
                         <label class="form-check-label" for="flexRadioDefault1" >
                             Meztizo
                         </label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="etnia" id="flexRadioDefault2" value="indigena">
+                        <input class="form-check-input" type="radio" name="etnia" id="indigena" value="indigena">
                         <label class="form-check-label" for="flexRadioDefault2">
                             Indígena
                         </label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="etnia" id="flexRadioDefault3" value="afro">
+                        <input class="form-check-input" type="radio" name="etnia" id="afro" value="afro">
                         <label class="form-check-label" for="flexRadioDefault3">
                             Afroamericano
                         </label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="etnia" id="flexRadioDefault3" value="otro">
+                        <input class="form-check-input" type="radio" name="etnia" id="otro" value="otro">
                         <label class="form-check-label" for="flexRadioDefault3">
                             Otro
                         </label>
                     </div>
                 </div>
 
+                <!-- CONTRASEÑA -->
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label"><i class="fas fa-lock"
-                            id="regicon"></i>Contraseña</label>
-                    <input type="password" placeholder="**************" class="form-control" minlength="8" maxlength="16" id="exampleInputPassword1" name="passconf" required
+                    <i class="fas fa-lock" id="regicon"></i>Contraseña</label>
+                    <input type="password" placeholder="**************" class="form-control" id="contra" name="passconf" required
                         value="{{objReg.passconf}}">
                 </div>
+                <!-- -->
+
+                <!-- CONTRASEÑA 2 -->
                 <div class="mb-3">
-                    <label for="exampleInputPasswordConf1" class="form-label"><i class="fas fa-lock"
-                            id="regicon"></i>Confirmar Contraseña</label>
-                    <input type="password" placeholder="**************"class="form-control" minlength="8" maxlength="16" id="exampleInputPasswordConf1" name="passconf" required
-                        value="{{objReg.passconf}}">
+                    <i class="fas fa-lock" id="regicon"></i>Confirmar Contraseña</label>
+                    <input type="password" placeholder="**************"class="form-control"  id="contra1" name="passconf" required
+                        value="{{objReg.passconf}}">    
                 </div>
+                <!-- -->
 
                 <center>
                     <button type="submit" class="btn btn-primary" id="botonInicio"><i class="fas fa-thumbs-up" id="icon"></i>ACEPTAR</button>
