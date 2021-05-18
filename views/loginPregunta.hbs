@@ -12,6 +12,7 @@
         let contador_s = 0;
         let s = document.getElementById("segundos");
         let m = document.getElementById("minutos");
+        let estado = "true";
         const cronometro = setInterval(() => {
             if(contador_s == 60){
               contador_s = 0;
@@ -22,9 +23,13 @@
               }
             }
             s.innerHTML = contador_s;
-              if(contador_s == 15){
+              if(contador_s == 20){
                 clearInterval(cronometro);
+                alert("Tiempo excedido");
                 //carga();
+              }else if(contador_s >= 16){
+                  estado = "false";
+                  console.log(estado);
               }
             contador_s ++;
           }
@@ -39,7 +44,7 @@
         <div class="m-3 col-8">
             <h2 id="tituloRegistro"><i class="fas fa-user-check" id="icon"></i>Pregunta de Autenticidad</h2>
             <center><img src="/imagenes/valida.png" width="100" height="100"/></center>
-            <span id = "minutos">0</span>:<span id = "segundos">0</span>
+            <span id = "minutos">0</span>:<span name = "segundosID" id = "segundos">0</span>
         </div>
     </div>
 
