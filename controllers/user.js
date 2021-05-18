@@ -9,13 +9,13 @@ const loginMed = async(req = request, res = response) => {
     var objLogin = req.body;
     try {
         const correo = await User.findOne({ correo: objLogin.correo });
-        if(correo.intentos > 3){
-            req.flash("msg_incorrecto", "Estas bloqueado :) \n sobrepasaste el numero de intentos permitidos");
-            res.redirect("/login");
-        }else{
-            if (correo) {
-                var equal = await correo.decryptPass(objLogin.pass, correo.passconf);
+        if (correo) {
+            if(correo.intentos > 3){
+                req.flash("msg_incorrecto", "Estas bloqueado :) \n sobrepasaste el numero de intentos permitidos");
+                res.redirect("/login");
+            }else{
                 //console.log("Reg Usuario\n" + correo);
+                var equal = await correo.decryptPass(objLogin.pass, correo.passconf);
                 var id = encodeURIComponent(correo._id);
                 if (equal) {
                     req.flash("msg_correcto", "Bienvenido "+correo.name);
@@ -24,10 +24,11 @@ const loginMed = async(req = request, res = response) => {
                     req.flash("msg_incorrecto", "Contraseña incorrecta :)");
                     res.redirect("/login");
                 }
-            } else {
-                req.flash("msg_incorrecto", "Correo no Existe!! :)");
-                res.redirect("/login");
             }
+         
+        } else {
+            req.flash("msg_incorrecto", "Correo no Existe!! :)");
+            res.redirect("/login");
         }
     } catch (error) {
         console.log(error);
