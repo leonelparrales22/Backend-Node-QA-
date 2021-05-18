@@ -31,7 +31,12 @@
                     <i class="fas fa-id-card" id="regicon"></i>Cédula
                     <input type="text" placeholder="Ingresar cédula" class="form-control" minlength="10"  id="cedula"
                         name="cedula" required value="{{objReg.cedula}}" onkeypress="soloNum(event)">
-                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        
+                </div>
+                <div class="mb-3">
+                    <i class="fas fa-city" id="regicon"></i>Ciudad:
+                    <input type="text" placeholder="Ejemplo: Quito" class="form-control"  id="ciudad"
+                        name="ciudad" required >
                 </div>
 
                 <div class="mb-3">
@@ -47,7 +52,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <i class="fas fa-envelope" id="regicon"></i>Dirección de Correo
+                    <i class="fas fa-envelope" id="regicon"></i>Correo electrónico
                     <input type="text" placeholder="ejemplo@hotmail.com" class="form-control" id="correo"
                         aria-describedby="emailHelp" name="correo" required value="{{objReg.correo}}">
                     <div id="emailHelp" class="form-text">No compartiremos tu correo con nadie más.</div>
