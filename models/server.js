@@ -5,12 +5,14 @@ const hbs = require("express-handlebars");
 const flash = require("connect-flash");
 const session = require("express-session");
 const bp = require("body-parser");
+const passport = require("passport");
 
 class Server {
   constructor() {
     this.app = express();
-    this.port = process.env.PORT;
+    this.port = process.env.PORT || process.env.AUXPORT;
     this.views = path.join(__dirname, "views");
+    require("../config/passport");
 
     // Middlewares
     this.middlewares();
@@ -29,11 +31,15 @@ class Server {
       extname: ".hbs"
     }));
 
+    //Session
     this.app.use(session({
       secret: "secret",
       resave: true,
       saveUninitialized: true
     }))
+    this.app.use(passport.initialize());
+    this.app.use(passport.session());
+
     //flash
     this.app.use(flash());
 
@@ -41,6 +47,7 @@ class Server {
     this.app.use((req, res, next)=>{
       res.locals.correcto = req.flash("msg_correcto");
       res.locals.fallo = req.flash("msg_incorrecto");
+      res.locals.user = req.user;
       next();
     });
 
@@ -68,7 +75,7 @@ class Server {
 
   listen() {
     this.app.listen(this.port, () => {
-      console.log("Servidor corriendo en puerto", process.env.PORT);
+      console.log("Servidor corriendo en puerto", this.port);
     });
   }
 }
