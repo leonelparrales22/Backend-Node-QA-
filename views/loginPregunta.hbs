@@ -10,7 +10,8 @@
         <div class="col-2"></div>
         <br><br>
         <div class="m-3 col-8">
-            <h2 id="tituloRegistro"><i class="fas fa-user-circle" id="icon"></i>Pregunta :O</h2>
+            <h2 id="tituloRegistro"><i class="fas fa-user-check" id="icon"></i>Pregunta de Autenticidad</h2>
+            <center><img src="/imagenes/valida.png" width="100" height="100"/></center>
         </div>
     </div>
 
@@ -21,7 +22,7 @@
             <form method="POST" action="/login/{{id}}" enctype="application/x-www-form-urlencoded">
             {{#if bool}}
                 <div class="mb-3">
-                    {{preg}}
+                    <b>{{preg}}</b>
                     <select class="form-select" name="{{head}}">
                         <option value="">-----Seleccionar</option>
                         <option value="Verano">Verano</option>
@@ -32,13 +33,13 @@
                 </div>
             {{else}}
                   <div class="mb-3">
-                    {{preg}}
+                    <b>{{preg}}</b>
                     <input type="text" placeholder="Escribe ..." class="form-control"
                     id="pais" name="{{head}}" required value="">
                 </div>
             {{/if}}
                 <center>
-                    <button type="submit" class="btn btn-primary" id="boton">ACEPTAR</button>
+                    <button type="submit" class="btn btn-primary" id="botonInicio"><i class="fas fa-thumbs-up" id="icon"></i>ACEPTAR</button>
                     <br><br> <br><br>
                 </center>
             </form>

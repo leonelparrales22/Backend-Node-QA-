@@ -14,7 +14,7 @@ footer {
 }
 
 #tituloRegistro {
-    background-color: #141D5E;
+    background-color: #3E6FBF;
     text-align: center;
     align-content: center;
     padding: 5px;
@@ -41,12 +41,27 @@ body {
     padding-left: 10px;
 }
 
+#Info {
+    padding-right: 5px;
+    padding-left: 10px;
+    background-color: #F0E86C;
+    color: black;
+}
+
 #regicon {
     padding-right: 5px;
     color: #141D5E;
 }
 
 #boton {
+    background-color: #3E6FBF;
+    text-align: center;
+    padding: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+#botonInicio {
     background-color: #141D5E;
     text-align: center;
     padding: 10px;
