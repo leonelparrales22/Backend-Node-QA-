@@ -142,7 +142,7 @@ const registroMed = async(req = request, res = response) => {
             await newReg.save();
             res.render("preguntas", {
                 id: newReg._id
-            })
+            });
         }
     } catch (e) {
         console.log(e);
