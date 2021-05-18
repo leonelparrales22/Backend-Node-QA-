@@ -79,7 +79,7 @@ const loginPost = async(req = request, res = response) => {
         //console.log(user);
         var mipregunta = Object.keys(req.body)[0];
         if(req.body[mipregunta] === user[mipregunta]){
-            var resp = await User.findOneAndUpdate(req.params.id, {intentos: 0});
+            var resp = await User.findByIdAndUpdate(req.params.id, {intentos: 0});
             req.flash("msg_correcto", "Si que es usted !! :)\n Bienvenido "+user.name+"!");
             res.redirect("/user");
         }else{
@@ -97,7 +97,7 @@ const loginPost = async(req = request, res = response) => {
             else{
                 req.flash("msg_incorrecto", "Alto ahi!! te quedan: "+ (F) + " intentos");
             }
-            var resp = await User.findOneAndUpdate(req.params.id, {intentos: intentos});
+            var resp = await User.findByIdAndUpdate(req.params.id, {intentos: intentos});
             res.redirect("/loginPregunta?id="+req.params.id);
         }  
     }else{
@@ -140,6 +140,7 @@ const registroMed = async(req = request, res = response) => {
             const newReg = new User(objReg);
             newReg.passconf = await newReg.encryptPass(objReg.passconf);
             await newReg.save();
+           /// console.log("reg: "+newReg);
             res.render("preguntas", {
                 id: newReg._id
             });
@@ -152,7 +153,8 @@ const registroMed = async(req = request, res = response) => {
 const registroPost = async(req = request, res = response) => {
     //console.log(req.params.id);
     objRegistro = req.body;
-    var resp = await User.findOneAndUpdate(req.params.id, objRegistro ); //Encuentro el id y edito
+    var resp = await User.findByIdAndUpdate(req.params.id, objRegistro ); //Encuentro el id y edito
+    console.log("palabras: "+resp);
     req.flash("msg_correcto", "Registrado!! :)");
     res.redirect("/login");
 };
