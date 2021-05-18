@@ -15,7 +15,7 @@ const registro = new Schema({
     sexo: { type: String, required:true },
     tSangre: { type: String, required:false },
     eCivil: { type: String, required:false },
-    img: {type: String, required:false},
+    etnia: {type: String, required:false},
     passconf: { type: String, required:true },
     clima: { type: String, required:false },
     pais: { type: String, required:false },
