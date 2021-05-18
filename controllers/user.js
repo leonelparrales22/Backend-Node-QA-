@@ -25,7 +25,6 @@ const loginMed = async(req = request, res = response) => {
                     res.redirect("/login");
                 }
             }
-
         } else {
             req.flash("msg_incorrecto", "Correo no Existe!! :)");
             res.redirect("/login");
@@ -36,7 +35,11 @@ const loginMed = async(req = request, res = response) => {
 };
 
 const loginPregunta = (req = request, res = response) => {
+    //console.log(req.user._id);
     var id = req.query.id;
+    if(!id){
+        id = req.user._id;//cojo el id de la session en el caso de que no envie en la query
+    }
     var text = "";
     var head = "";
     var bool = false;
@@ -82,6 +85,7 @@ const loginPost = async(req = request, res = response) => {
         if (req.body[mipregunta] === user[mipregunta]) {
             var resp = await User.findByIdAndUpdate(req.params.id, { intentos: 0 });
             req.flash("msg_correcto", "Si que es usted !! :)\n Bienvenido " + user.name + "!");
+            req.user.ok = true;
             res.redirect("/user");
         } else {
             intentos++;
@@ -100,6 +104,7 @@ const loginPost = async(req = request, res = response) => {
         }
     } else {
         req.flash("msg_incorrecto", "Lo sentimos, acceso bloqueado!");
+        req.logout();
         res.redirect("/");
     }
 };
@@ -157,10 +162,6 @@ const registroPost = async(req = request, res = response) => {
     res.redirect("/login");
 };
 
-const pregAuntenticacion = (req = request, res = response) => {
-    res.render("preguntas");
-};
-
 module.exports = {
     loginGet,
     loginMed,
@@ -168,6 +169,5 @@ module.exports = {
     loginPost,
     registroGet,
     registroMed,
-    registroPost,
-    pregAuntenticacion,
+    registroPost
 };

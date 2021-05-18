@@ -12,13 +12,18 @@
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/reg"><i class="fas fa-user-plus" id="icon"></i>Regístrate</a>
-        </li>
-        <li class="nav-item">
-          
-          <a class="nav-link"  href="/login"><i class="fas fa-user" id="icon"></i>Iniciar sesión </a>
-        </li>
+        {{#if user}}
+          <li class="nav-item">
+            <a class="nav-link"  href="/user/salir"><i class="fas fa-sign-out-alt" id="icon"></i>Cerrar sesión</a>
+          </li>
+        {{else}}
+            <li class="nav-item">
+              <a class="nav-link" href="/reg"><i class="fas fa-user-plus" id="icon"></i>Regístrate</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  href="/login"><i class="fas fa-user" id="icon"></i>Iniciar sesión</a>
+            </li>
+        {{/if}}
       </ul>
     </div>
   </div>
