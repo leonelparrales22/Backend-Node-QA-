@@ -80,7 +80,7 @@ const loginPost = async(req = request, res = response) => {
     var error = req.body.value;
     var user = await User.findById(req.params.id);
     var intentos = user.intentos;
-    if (intentos < 4) {
+    if (intentos < 3) {
         //console.log(user);
             var mipregunta = Object.keys(req.body)[0];
             if (req.body[mipregunta] === user[mipregunta] && !error) {
@@ -89,17 +89,15 @@ const loginPost = async(req = request, res = response) => {
                 req.user.ok = true;
                 res.redirect("/user");
             } else {
-                intentos++;
                 F = 3 - intentos;
-                if (F < 0) {
-                    req.flash("msg_incorrecto", "Lo sentimos, Cuenta bloqueada!");
-                } else if (F == 0) {
+                if (F == 1) {
                     req.flash("msg_incorrecto", "Es tu última oportunidad: " + (F) + " intentos, tu cuenta quedará  bloqueada por 48 horas :)");
-                } else if (F == 1) {
+                } else if (F == 2) {
                     req.flash("msg_incorrecto", "Recuerda ingesar la repuesta tal cual ingresaste en el registro(Mayúsculas, tildes, espacios): " + (F) + " intento");
                 } else {
                     req.flash("msg_incorrecto", "Alto ahí!! te quedan: " + (F) + " intentos");
                 }
+                intentos++;
                 var resp = await User.findByIdAndUpdate(req.params.id, { intentos: intentos });
                 res.redirect("/loginPregunta?id=" + req.params.id);
             }    
