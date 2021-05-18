@@ -11,7 +11,7 @@ passport.use("local.login", new localStrategy({
     const Ucorreo = await User.findOne({ correo: objLogin.correo });
     if (Ucorreo) {
         if (Ucorreo.intentos > 2) {
-            return done(null, false, req.flash("msg_incorrecto", "Estas bloqueado :) \n sobrepasaste el numero de intentos permitidos"));
+            return done(null, false, req.flash("msg_incorrecto", "Estás bloqueado :) \n sobrepasaste el número de intentos permitidos"));
         } else {
             var equal = await Ucorreo.decryptPass(pass, Ucorreo.passconf);
             if (equal) {
