@@ -71,9 +71,8 @@
               }
             }
             s.innerHTML = contador_s;
-              if(contador_s == 5){
+              if(contador_s == 20){
                 clearInterval(cronometro);
-                alert("Tiempo excedido");
                 //const Http = new XMLHttpRequest();
                 //const url=`localhost:8000/login/${inputVal}`
                 //console.log(url);
@@ -88,7 +87,8 @@
                 xhr.send(JSON.stringify({
                 value: "False"
                 }));
-                //window.location.reload();
+                alert("Tiempo excedido");
+                window.location.reload();
               }else if(contador_s >= 16){
                   estado = "False";
                   console.log(estado);
